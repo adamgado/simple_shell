@@ -9,36 +9,29 @@ int main(void)
 	char *b = buffer;
 	size_t bufsize = 32;
 	size_t characters;
-	char **args;
+	int chars;
+	size_t e = str_to_int("^C");
 
-	while (characters)
+	while (characters != e)
 	{
 		write(1, "$ ", str_len("$ "));
 		characters = getline(&b, &bufsize, stdin);
+		chars = characters;
 
-		if (characters == -1)
+		if (chars == -1)
 		{
 			write(1, "error\n", str_len("error\n"));
 		} else
+		{
+			if (check_file(b) == 0)
 			{
-
-			args = **arg_handle(b);
-
-			if (check_file(args[0]) == 0)
-			{
-				write(1, "No such file or directory \n", 27));
+				write(1, "No such file or directory \n", 27);
 			}
-			if (comp_str(b, "env") == 0)
+			 if (comp_str(b, "exit") == 0)
 			{
-				print_env()
-			}
-			else if (comp_str(b, "exit") == 0)
-			{
-				exit_shell()
+				exit_shell();
 			}
 		}
 	}
-
-	free(args);
 	return (0);
 }

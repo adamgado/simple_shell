@@ -1,12 +1,10 @@
 #include "main.h"
 /**
  * print_env - print current environment
- * @ac: number of arguments
- * @av: array of pointers to arguments
  * @env: array of pointers to the environment
  * Return: 0
  */
-int print_env(int ac, char **av, char **env)
+int print_env(char **env)
 {
 	int i = 0;
 
